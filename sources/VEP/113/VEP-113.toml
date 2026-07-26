@@ -27,7 +27,7 @@
 
   [[sources.steps]]
     name = "postprocess"
-    run = "python3 {workdir}/expand_vep_vcf.py < {workdir}/vep.vcf | python3 {workdir}/vep_vcf_worst_consequence.py | cganno bgzip > {output}"
+    run = "python3 {workdir}/expand_vep_vcf.py < {workdir}/vep.vcf | python3 {workdir}/vep_vcf_worst_consequence.py | varhub bgzip > {output}"
 
   [[sources.annotations]]
     name = "VEP_Allele"
