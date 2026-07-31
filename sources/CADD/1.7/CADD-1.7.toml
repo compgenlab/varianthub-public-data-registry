@@ -5,6 +5,7 @@
   format = "tab"
   ref_col = 3
   alt_col = 4
+  stream = true
 
   [[sources.files]]
     url = "https://krishna.gs.washington.edu/download/CADD/v1.7/GRCh38/whole_genome_SNVs.tsv.gz"
