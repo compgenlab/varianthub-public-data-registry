@@ -3,6 +3,7 @@
   version = "20250202"
   assembly = "GRCh38"
   format = "vcf"
+  stream = true
   url = "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/weekly/clinvar_20250202.vcf.gz"
   url_index = "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/weekly/clinvar_20250202.vcf.gz.tbi"
   checksum = "md5:https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/weekly/clinvar_20250202.vcf.gz.md5"
