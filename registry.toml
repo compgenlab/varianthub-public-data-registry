@@ -2,7 +2,7 @@
 
 [[sources]]
 name = "GRCh38"
-version = "gencode-p14"
+version = "gencode50-p14"
 assembly = "GRCh38"
 file = "sources/GRCh38/gencode-p14/GRCh38-p14.toml"
 
