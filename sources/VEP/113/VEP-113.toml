@@ -5,6 +5,19 @@
   assembly = "GRCh38"
   format = "vcf"
   requires = ["python3"]
+  # The run step passes --fasta {ref}, so this source cannot run without a
+  # reference genome for its assembly. Declaring it is what makes an ad-hoc
+  # selection pin the build's default reference, and what lets a missing one be
+  # refused before the tool starts.
+  #
+  # Undeclared, {ref} renders as the empty string and the command stays valid
+  # shell while meaning something else: "--fasta --fork 4" makes --fasta consume
+  # --fork, and VEP reports
+  #
+  #   ERROR: Unexpected extra command-line parameter(s): 4
+  #
+  # which mentions neither the reference nor the flag that swallowed it.
+  requires_reference = true
   image = "docker://ensemblorg/ensembl-vep:release_113.3"
   engine = "apptainer"
   output = "vep.vcf.gz"
