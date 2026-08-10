@@ -188,7 +188,7 @@
     assets = ["convert_csv_to_tab.py"]
     run = [
       "cd {workdir} && for z in inputs/*.zip; do unzip -o $z -d segments; done",
-      "python3 {workdir}/convert_csv_to_tab.py {workdir}/segments/segments/*.csv | sort -k 1,1 -k 2,2n | varhub bgzip > {output}",
+      "python3 {workdir}/convert_csv_to_tab.py {workdir}/segments/segments/*.csv | sort -S 768M -k 1,1 -k 2,2n | varhub bgzip > {output}",
       "varhub tabix -S 1 -s 1 -b 2 -e 2 {output}",
     ]
 
