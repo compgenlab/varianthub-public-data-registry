@@ -5,19 +5,11 @@
   assembly = "GRCh38"
   format = "vcf"
   requires = ["python3"]
+
   # The run step passes --fasta {ref}, so this source cannot run without a
-  # reference genome for its assembly. Declaring it is what makes an ad-hoc
-  # selection pin the build's default reference, and what lets a missing one be
-  # refused before the tool starts.
-  #
-  # Undeclared, {ref} renders as the empty string and the command stays valid
-  # shell while meaning something else: "--fasta --fork 4" makes --fasta consume
-  # --fork, and VEP reports
-  #
-  #   ERROR: Unexpected extra command-line parameter(s): 4
-  #
-  # which mentions neither the reference nor the flag that swallowed it.
+  # reference genome for its assembly. 
   requires_reference = true
+
   image = "docker://ensemblorg/ensembl-vep:release_113.3"
   engine = "apptainer"
   output = "vep.vcf.gz"
@@ -28,10 +20,6 @@
     name = "install"
     run = "INSTALL.pl -c {datadir} -r {datadir}/plugins -a cfp -g CSN -s homo_sapiens -y GRCh38"
     container = true
-
-  [[sources.setup]]
-    name = "polyphen-sift-db"
-    run = "test -f {datadir}/PolyPhen_SIFT.db || curl -L --fail -o {datadir}/PolyPhen_SIFT.db http://ftp.ensembl.org/pub/current_variation/pangenomes/Human/homo_sapiens_pangenome_PolyPhen_SIFT_20240502.db"
 
   [[sources.steps]]
     name = "vep"
